@@ -6,7 +6,7 @@ NodeJS provides an interface to using the sendfile(2) system call. Briefly, this
 
 Using this is slightly tricky in NodeJS, as the sendfile(2) call is not guaranteed to write all of a file's data to the given socket. Just like the write(2) system call, it can declare success after only writing a portion of the file contents to the given socket. This is commonly the case with non-blocking sockets, as files larger than the TCP send window cannot be buffered entirely in the TCP stack. At this point, one must wait until some of this outstanding data has been flushed to the other end of the TCP connection.
 
-Without further ado, the following code implements a TCP server that uses sendfile(2) to transfer the contents of a file to every client that connects.
+implements a TCP server that uses sendfile(2) to transfer the contents of a file to every client that connects.
 ```js
 var assert = require('assert');
 var net = require('net');
